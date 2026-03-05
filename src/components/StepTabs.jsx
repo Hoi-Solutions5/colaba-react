@@ -12,15 +12,17 @@ import { useNavigate } from "react-router-dom";
 import "./StepTabs.css";
 
 export default function StepTabs({ steps = [], active }) {
+
+  console.log("Rendering StepTabs with steps:", steps, "and active:", active);
   const navigate = useNavigate();
 
   return (
     <nav className="steptabs" aria-label="Workflow steps">
       <div className="steptabs__track">
-        {steps.map((step, i) => {
-          const isActive   = step.label === active;
-          const isPast     = steps.findIndex((s) => s.label === active) > i;
-          const isLast     = i === steps.length - 1;
+        {steps?.map((step, i) => {
+          const isActive   = step?.label === active;
+          const isPast     = steps?.findIndex((s) => s?.label === active) > i;
+          const isLast     = i === steps?.length - 1;
 
           return (
             <React.Fragment key={step.label}>

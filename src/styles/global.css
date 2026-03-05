@@ -27,7 +27,7 @@
   --g-card-warm:     linear-gradient(to right, rgba(255,208,121,0.20), rgba(248,120,70,0.20));
 
   /* ── Fonts ── */
-  --font:            'Lato', sans-serif;
+  --font:            'Lato';
   --font-os:         'Open Sans', sans-serif;
 
   /* ── Spacing ── */
@@ -58,6 +58,17 @@
   --header-h: 89px;
   --sidebar-w: 311px;
   --footer-h: 91px;
+}
+
+body, html {
+  font-family: 'Lato', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Agar specific components ke liye alag font chahiye */
+.lato-font {
+  font-family: 'Lato', sans-serif !important;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

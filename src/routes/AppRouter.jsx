@@ -68,7 +68,7 @@ export default function AppRouter() {
 
       {/* ── Future pages (not yet built — swap ComingSoon for real component when ready) ── */}
       {/* Figma: "Start Your Book - Outline Creation" (node-id: 955:4989) */}
-      <Route path={PATHS.OUTLINE_CREATION} element={<StartYourBookOutlineCreation />} />
+      <Route path={PATHS. OUTLINE_CREATION} element={<StartYourBookOutlineCreation />} />
       <Route path={PATHS.PUBLISHING}       element={<ComingSoon title="Publishing" />} />
 
       {/* Figma: "Start Your Book - Chapter Writing" (node-id: 1123:484) */}

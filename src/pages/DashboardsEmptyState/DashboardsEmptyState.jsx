@@ -25,7 +25,7 @@ function EmptyCard() {
   return (
     <article className="es-card" aria-label="Get started with Colaba AI">
       {/* Hero illustration */}
-      <img src={IMG_BOOK_HERO} alt="Book writing illustration" className="es-card__img" />
+      <img src="/images/book.png" alt="Book writing illustration" className="es-card__img" />
 
       <div className="es-card__content">
         {/* Headline */}

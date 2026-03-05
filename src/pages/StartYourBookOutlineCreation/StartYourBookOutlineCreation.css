@@ -35,12 +35,12 @@
 }
 
 .oc-header__desc {
-  font-family: var(--font);
-  font-size: 15px;
-  color: var(--c-text-muted);
-  line-height: 1.65;
-  margin: 0;
-  max-width: 580px;
+    font-family: var(--font);
+    font-size: 17px;
+    color: #747473;
+    line-height: 1.65;
+    margin: 0;
+    /* max-width: 580px; */
 }
 
 .oc-header__meta {
@@ -240,7 +240,7 @@
   padding: 9px 18px;
   background: var(--c-white);
   border: 1.5px solid var(--c-border);
-  border-radius: var(--r-sm);
+  border-radius: 32px;
   font-family: var(--font);
   font-size: 13px;
   font-weight: 600;
@@ -253,10 +253,12 @@
 .oc-btn-edit:active { transform: scale(0.97); }
 
 .oc-btn-update {
+  border-radius: 24px;
+background: #FEBD43;
   padding: 9px 18px;
-  background: var(--g-brand);
+ 
   border: 1px solid var(--c-amber);
-  border-radius: var(--r-sm);
+ 
   box-shadow: var(--shadow-btn);
   font-family: var(--font);
   font-size: 13px;
@@ -288,13 +290,16 @@
 }
 
 .oc-btn-add {
+ border-radius: 29px;
+border: 1px solid var(--Liner, #FFD079);
+background: rgba(255, 208, 121, 0.10);
   display: inline-flex;
   align-items: center;
   gap: 9px;
   padding: 10px 20px;
-  background: var(--c-white);
-  border: 1.5px solid var(--c-border);
-  border-radius: var(--r-pill);
+ 
+ 
+ 
   font-family: var(--font);
   font-size: 14px;
   font-weight: 600;

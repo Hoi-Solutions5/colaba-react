@@ -24,9 +24,9 @@ function CoverPlaceholder({ index }) {
   return (
     <div
       className="book-card__cover-placeholder"
-      style={{ background: `linear-gradient(135deg, ${bg} 0%, ${acc} 100%)` }}
-      aria-hidden="true"
+    
     >
+      <img src="/images/book3.png" alt="" />
       <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
         <rect x="12" y="8" width="40" height="48" rx="4" fill="white" fillOpacity="0.32" />
         <rect x="16" y="14" width="28" height="3" rx="1.5" fill="white" fillOpacity="0.6" />
@@ -39,19 +39,47 @@ function CoverPlaceholder({ index }) {
   );
 }
 
-export default function BookCard({ title, words, badge, index = 0, imgSrc }) {
+export default function BookCard({ title, words, badge, index = 0, imgSrc, progress = 33 }) {
   return (
     <article className="book-card" tabIndex={0} aria-label={`Book: ${title}`}>
       {imgSrc
         ? <img src={imgSrc} alt={title} className="book-card__cover-img" />
         : <CoverPlaceholder index={index} />
       }
+
+      {/* ── Body — Figma node 955:4354
+           bg #1f1f1f  padding 13px 10.63px  gap 4.619px ── */}
       <div className="book-card__body">
-        <p className="book-card__title">{title}</p>
+
+        {/* Top row: title+chapters left · timestamp right */}
         <div className="book-card__meta">
-          <span className="book-card__words">{words}</span>
-          {badge && <span className="book-card__badge">{badge}</span>}
+
+          {/* Left column — Figma: w-158px gap-5.542px */}
+          <div className="book-card__meta-left">
+            {/* Title — Figma: Lato Bold 16.627px #ffffff whitespace-nowrap */}
+            <p className="book-card__title">{title}</p>
+            {/* Chapters text — Figma: Lato Regular 9.237px rgba(255,255,255,0.7) */}
+            {words && <span className="book-card__words">{words}</span>}
+          </div>
+
+          {/* Right column — Figma: w-56.347px items-end justify-end */}
+          {badge && (
+            <div className="book-card__meta-right">
+              {/* Timestamp — Figma: Lato Regular 9.237px rgba(255,255,255,0.7) text-right */}
+              <span className="book-card__badge">{badge}</span>
+            </div>
+          )}
         </div>
+
+        {/* Progress bar — Figma: track rgba(217,217,217,0.2) h-2.864px rounded-52.652px
+                           fill  #febd43                      h-3px   rounded-52.652px */}
+        <div className="book-card__progress-track">
+          <div
+            className="book-card__progress-fill"
+            style={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
+          />
+        </div>
+
       </div>
     </article>
   );

@@ -10,9 +10,21 @@
   margin-bottom: 28px;
 }
 
+.brand-text{
+  background: linear-gradient(90deg, #FEBD43 26.92%, #F87846 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+font-size: 32px;
+font-style: italic;
+font-weight: 700;
+line-height: 120%;
+}
+
 .db-greeting__title {
-  font-family: var(--font-primary);
-  font-size: 36px;
+  
+  font-size: 43px;
   font-weight: 700;
   color: var(--c-text-dark);
   margin: 0 0 6px;
@@ -22,7 +34,7 @@
 .db-greeting__name { color: var(--c-amber); }
 
 .db-greeting__sub {
-  font-family: var(--font-primary);
+  
   font-size: 14px;
   color: var(--c-text-muted);
   margin: 0;
@@ -49,7 +61,7 @@
 .db-sidebar-cta:active { transform: scale(0.97); }
 .db-sidebar-cta img    { width: 18px; height: 18px; }
 .db-sidebar-cta span {
-  font-family: var(--font-primary);
+  
   font-size: 13px;
   font-weight: 600;
   color: var(--c-white);
@@ -58,18 +70,17 @@
 
 /* ── Progress banner ── */
 .db-banner {
-  background: linear-gradient(to right, rgba(255,208,121,0.22), rgba(248,120,70,0.22));
-  border: 1px solid var(--c-amber);
-  border-radius: var(--r-lg);
-  padding: 28px 36px;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  margin-bottom: 36px;
+    background: linear-gradient(to right, rgba(255, 208, 121, 0.22), rgba(248, 120, 70, 0.22));
+    border: 1px solid var(--c-amber);
+    border-radius: var(--r-lg);
+    padding: 1px 43px;
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-bottom: 36px;
 }
-
 .db-banner__img {
-  width: 140px;
+  /* width: 140px; */
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -77,8 +88,8 @@
 .db-banner__body  { flex: 1; }
 
 .db-banner__title {
-  font-family: var(--font-primary);
-  font-size: 24px;
+  
+  font-size: 32px;
   font-weight: 600;
   color: var(--c-text-dark);
   margin: 0 0 8px;
@@ -86,12 +97,12 @@
 }
 
 .db-banner__sub {
-  font-family: var(--font-primary);
-  font-size: 13px;
+  
+  font-size: 18px;
   color: var(--c-text-muted);
   margin: 0 0 20px;
   line-height: 1.6;
-  max-width: 520px;
+ 
 }
 .db-banner__sub strong { color: var(--c-text-dark); font-weight: 600; }
 
@@ -112,7 +123,7 @@
 }
 
 .db-recent__title {
-  font-family: var(--font-primary);
+  
   font-size: 18px;
   font-weight: 700;
   color: var(--c-text-dark);
@@ -125,7 +136,7 @@
 .db-tab {
   padding: 5px 14px;
   border-radius: var(--r-pill);
-  font-family: var(--font-primary);
+  
   font-size: 13px;
   font-weight: 600;
   border: 1.5px solid transparent;
@@ -148,7 +159,7 @@
   border: 1.5px solid var(--c-border);
   border-radius: var(--r-pill);
   background: var(--c-white);
-  font-family: var(--font-primary);
+  
   font-size: 12px;
   font-weight: 500;
   color: var(--c-text-muted);

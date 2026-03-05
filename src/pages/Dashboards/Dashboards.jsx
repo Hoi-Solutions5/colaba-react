@@ -24,9 +24,9 @@ const MY_BOOKS = [
 ];
 
 const RECENT_BOOKS = [
-  { id: 1, title: "The Unwanted Ghost", words: "12k words",  badge: "In Progress" },
-  { id: 2, title: "The Unwanted Ghost", words: "8.4k words", badge: "Draft"       },
-  { id: 3, title: "The Unwanted Ghost", words: "5.1k words", badge: "In Progress" },
+  { id: 1, title: "The Unwanted Ghost", words: "4 of 12 chapters complete",  badge: "2h ago" },
+  { id: 2, title: "The Unwanted Ghost", words: "4 of 12 chapters complete", badge: "2h ago"       },
+  { id: 3, title: "The Unwanted Ghost", words: "4 of 12 chapters complete", badge: "2h ago" },
 ];
 
 /* ── Sidebar extras: My Books list + Get Free Book CTA ── */
@@ -62,17 +62,17 @@ function SettingsLink() {
 function ProgressBanner() {
   return (
     <div className="db-banner" aria-label="Writing progress">
-      <img src={IMG_BOOK_HERO} alt="Book illustration" className="db-banner__img" />
+      <img src="/images/book.png" alt="Book illustration" className="db-banner__img" />
       <div className="db-banner__body">
         <h2 className="db-banner__title">
           Write Your Book with <span className="brand-text">COLABA</span>
         </h2>
         <p className="db-banner__sub">
-          You&apos;re making great progress on <strong>The Art of Becoming.</strong>{" "}
-          You&apos;ve written <strong>1,240 words</strong> this week.
+          You&apos;re making great progress on The Art of Becoming.{" "}
+          You&apos;ve written 1,240 words this week.
         </p>
         <div className="db-banner__actions">
-          <Button variant="outline" size="sm" icon={IMG_PEN_SPARKLE} href="#">
+          <Button variant="outline" size="sm" icon="/images/edit-2.png" href="#">
             Continue Writing
           </Button>
           <Button variant="primary" size="sm" icon={IMG_PEN_SPARKLE} href="#">

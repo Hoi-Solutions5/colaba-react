@@ -17,15 +17,20 @@
 }
 
 /* Sizes */
-.colaba-btn--sm { padding: 8px 16px;  font-size: 12px; }
+.colaba-btn--sm {
+    padding: 8px 24px;
+    font-size: 12px;
+    background-color: black;
+}
 .colaba-btn--md { padding: 10px 22px; font-size: 13px; }
 
 /* Primary — amber → orange gradient */
 .colaba-btn--primary {
-  background: var(--g-brand);
-  border: 1px solid var(--c-amber);
-  color: var(--c-white);
-  box-shadow: var(--shadow-btn);
+  border-radius: 24px;
+border: 1px solid #FEBD43;
+background: linear-gradient(90deg, #FFD079 0%, #F87846 100%);
+box-shadow: 0 4px 8.1px 0 rgba(254, 189, 67, 0.40);
+color: black;
 }
 .colaba-btn--primary:hover  {
   filter: brightness(1.08);
@@ -36,9 +41,9 @@
 
 /* Outline */
 .colaba-btn--outline {
-  background: transparent;
-  border: 1.5px solid var(--c-text-dark);
-  color: var(--c-text-dark);
+    background: black;
+    border: 1.5px solid var(--c-text-dark);
+    color: white;
 }
 .colaba-btn--outline:hover  { background-color: rgba(0,0,0,0.06); transform: translateY(-1px); }
 .colaba-btn--outline:active { transform: scale(0.97); }

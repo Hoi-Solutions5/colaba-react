@@ -14,17 +14,17 @@ import "./StartYourBookTransitionToConversationChatStart.css";
 const ACTIVE = "Transition to Conversation";
 
 const START_OPTIONS = [
-  { id: "memoir",   emoji: "📖", label: "I want to write my life story or memoir" },
-  { id: "selfhelp", emoji: "💡", label: "I have a self-help book idea to share"   },
-  { id: "nonfic",   emoji: "🌍", label: "I'm exploring a non-fiction topic"       },
-  { id: "start",    emoji: "✍️", label: "I just want to start writing freely"     },
+  { id: "memoir", image: "/images/img1.png", label: "I want to write my life story or memoir" },
+  { id: "selfhelp", image: "/images/img2.png", label: "I have a self-help book idea to share"   },
+  { id: "nonfic",   image: "/images/img3.png", label: "I'm exploring a non-fiction topic"       },
+  { id: "start",    image: "/images/img4.png", label: "I just want to start writing freely"     },
 ];
 
 function FooterBar({ onExplore }) {
   return (
     <div className="ccs-footer">
       <span className="ccs-footer__hint">Ready to generate your first structured outline for free</span>
-      <button className="ccs-btn-explore" onClick={onExplore}>Let's Explore Ideas</button>
+      <button className="ccs-btn-explore" onClick={onExplore} >  Let's Explore Ideas</button>
     </div>
   );
 }
@@ -64,7 +64,8 @@ export default function StartYourBookTransitionToConversationChatStart() {
                   onClick={() => setSelected(opt.id)}
                   aria-pressed={selected === opt.id}
                 >
-                  <span className="ccs-option-btn__emoji">{opt.emoji}</span>
+                  <img src={opt.image} alt="" className="ccs-option-btn__img" />
+                  {/* <span className="ccs-option-btn__emoji">{opt.emoji}</span> */}
                   {opt.label}
                 </button>
               ))}

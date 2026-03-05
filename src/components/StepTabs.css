@@ -10,12 +10,16 @@
 }
 
 .steptabs__track {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  height: 64px;
-  overflow-x: auto;
-  scrollbar-width: none;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 64px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: center;
 }
 .steptabs__track::-webkit-scrollbar { display: none; }
 
@@ -74,14 +78,14 @@
 }
 
 .steptabs__dot--past {
-  background: #22c55e;
+  background: var(--c-amber);
   color: var(--c-white);
 }
 
 /* ── Label text ── */
 .steptabs__label {
   font-family: var(--font-os);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   color: rgba(116,116,115,0.7);
   line-height: 1.2;
