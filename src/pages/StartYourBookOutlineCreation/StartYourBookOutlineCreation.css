@@ -1,0 +1,415 @@
+/* ============================================================
+   StartYourBookOutlineCreation.css
+   Colaba.ai — Outline Creation page
+   Figma node-id: 955:4989
+   ============================================================ */
+
+/* ── Scroll shell ── */
+.oc-scroll {
+  overflow-y: auto;
+  padding-bottom: calc(var(--footer-h) + 20px);
+}
+
+/* ── Page body ── */
+.oc-body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 44px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ════════════════════════════════════
+   BOOK HEADER
+   ════════════════════════════════════ */
+.oc-header { display: flex; flex-direction: column; gap: 10px; }
+
+.oc-header__title {
+  font-family: var(--font);
+  font-size: 33px;
+  font-weight: 700;
+  color: var(--c-dark);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.oc-header__desc {
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--c-text-muted);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 580px;
+}
+
+.oc-header__meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.oc-meta-pill {
+  background: var(--c-dark);
+  color: var(--c-white);
+  font-family: var(--font);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 5px 13px;
+  border-radius: var(--r-pill);
+}
+
+/* ════════════════════════════════════
+   CHAPTER LIST
+   ════════════════════════════════════ */
+.oc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ════════════════════════════════════
+   CHAPTER CARD
+   ════════════════════════════════════ */
+.oc-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: 18px;
+  padding: 22px 22px 22px 14px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  position: relative;
+}
+
+.oc-card:hover {
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+}
+
+/* Ghost (item being dragged — stays in list as placeholder) */
+.oc-card--ghost {
+  opacity: 0.4;
+  border-color: var(--c-amber) !important;
+  box-shadow: none !important;
+}
+
+/* Editing state */
+.oc-card--editing {
+  border-color: rgba(254,189,67,0.55);
+  box-shadow: 0 0 0 3px rgba(254,189,67,0.1);
+}
+
+/* Overlay (the card that floats while dragging) */
+.oc-card--overlay {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.16) !important;
+  border-color: var(--c-amber) !important;
+  opacity: 1 !important;
+  cursor: grabbing;
+  transform: rotate(1deg) scale(1.015);
+}
+
+/* ── Drag handle ── */
+.oc-drag-handle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5px;
+  padding: 4px 3px;
+  margin-top: 2px;
+  background: none;
+  border: none;
+  cursor: grab;
+  flex-shrink: 0;
+  opacity: 0.28;
+  transition: opacity 0.18s;
+  touch-action: none;
+  align-self: flex-start;
+}
+
+.oc-drag-handle:hover  { opacity: 0.65; }
+.oc-drag-handle:active { cursor: grabbing; opacity: 1; }
+.oc-drag-handle:focus-visible { outline: 2px solid var(--c-amber); border-radius: 4px; }
+
+.oc-drag-handle i {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--c-dark);
+}
+
+/* ── Card body layout ── */
+.oc-card__body-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.oc-card__view,
+.oc-card__edit {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.oc-card__title {
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-dark);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.oc-card__desc {
+  font-family: var(--font);
+  font-size: 13.5px;
+  color: var(--c-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.oc-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.oc-tag {
+  background: var(--c-dark);
+  color: var(--c-white);
+  font-family: var(--font);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+}
+
+/* ── Edit inputs ── */
+.oc-input-title {
+  width: 100%;
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-dark);
+  border: 1.5px solid var(--c-amber);
+  border-radius: 8px;
+  padding: 8px 12px;
+  outline: none;
+  background: var(--c-white);
+  line-height: 1.3;
+  transition: box-shadow 0.18s;
+}
+.oc-input-title:focus {
+  box-shadow: 0 0 0 3px rgba(254,189,67,0.15);
+}
+
+.oc-input-desc {
+  width: 100%;
+  font-family: var(--font);
+  font-size: 13.5px;
+  color: var(--c-dark);
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  outline: none;
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.6;
+  background: var(--c-white);
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.oc-input-desc:focus {
+  border-color: rgba(254,189,67,0.5);
+  box-shadow: 0 0 0 3px rgba(254,189,67,0.09);
+}
+
+/* ── Card action buttons ── */
+.oc-card__action {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.oc-btn-edit {
+  padding: 9px 18px;
+  background: var(--c-white);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-sm);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-dark);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.18s, background 0.18s, transform 0.15s;
+}
+.oc-btn-edit:hover  { border-color: var(--c-amber); background: #fffdf7; }
+.oc-btn-edit:active { transform: scale(0.97); }
+
+.oc-btn-update {
+  padding: 9px 18px;
+  background: var(--g-brand);
+  border: 1px solid var(--c-amber);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-btn);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-white);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.18s, transform 0.15s, box-shadow 0.18s;
+}
+.oc-btn-update:hover  { filter: brightness(1.07); transform: translateY(-1px); box-shadow: var(--shadow-btn-lg); }
+.oc-btn-update:active { transform: scale(0.97); }
+
+/* ════════════════════════════════════
+   ADD NEW CHAPTER
+   ════════════════════════════════════ */
+.oc-add-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--c-white);
+  border: 1.5px dashed var(--c-border);
+  border-radius: 18px;
+  padding: 18px 24px;
+  transition: border-color 0.18s, background 0.18s;
+}
+.oc-add-row:hover {
+  border-color: rgba(254,189,67,0.45);
+  background: #fffdf9;
+}
+
+.oc-btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 20px;
+  background: var(--c-white);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-pill);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-dark);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.18s, background 0.18s, transform 0.15s;
+}
+.oc-btn-add:hover  { border-color: var(--c-amber); background: #fffdf7; }
+.oc-btn-add:active { transform: scale(0.97); }
+
+.oc-add-hint {
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--c-text-muted);
+}
+
+/* ════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════ */
+.oc-footer {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  max-width: 1608px;
+  margin: 0 auto;
+}
+
+.oc-footer__save {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 18px;
+  background: var(--c-white);
+  border: 1px solid #ccc;
+  border-radius: var(--r-pill);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-dark);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.oc-footer__save:hover  { border-color: var(--c-dark); transform: translateY(-1px); }
+.oc-footer__save:active { transform: scale(0.97); }
+.oc-footer__save svg    { flex-shrink: 0; color: var(--c-dark); }
+
+.oc-footer__change {
+  background: none;
+  border: none;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--c-text-faint);
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+  transition: color 0.18s;
+}
+.oc-footer__change:hover { color: var(--c-dark); }
+
+.oc-footer__auto {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--c-text-faint);
+  white-space: nowrap;
+}
+
+.oc-footer__looks {
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--c-text-faint);
+  white-space: nowrap;
+}
+
+.oc-footer__write {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 26px;
+  background: var(--g-brand);
+  border: 1px solid var(--c-amber);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-btn);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-white);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.oc-footer__write:hover  { filter: brightness(1.08); transform: translateY(-2px); box-shadow: var(--shadow-btn-lg); }
+.oc-footer__write:active { transform: scale(0.97); }
+
+/* ════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .oc-body { padding: 32px 28px; }
+}
+@media (max-width: 768px) {
+  .oc-body            { padding: 20px 16px; gap: 18px; }
+  .oc-header__title   { font-size: 24px; }
+  .oc-card__body-wrap { flex-direction: column; }
+  .oc-card__action    { width: 100%; }
+  .oc-btn-edit,
+  .oc-btn-update      { width: 100%; justify-content: center; }
+  .oc-add-row         { flex-direction: column; align-items: flex-start; }
+  .oc-footer          { flex-wrap: wrap; gap: 10px; justify-content: space-between; }
+  .oc-footer__auto,
+  .oc-footer__looks,
+  .oc-footer__change  { display: none; }
+}

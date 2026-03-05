@@ -1,0 +1,97 @@
+/* pages/DashboardsEmptyState/DashboardsEmptyState.css
+   Figma: "Dashboards - Empty State" — node-id: 955:4211 */
+
+/* ── Center wrapper ── */
+.es-page-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-h) - 80px);
+}
+
+/* ── Empty state card ── */
+.es-card {
+  background: linear-gradient(to right, rgba(255,208,121,0.20), rgba(248,120,70,0.20));
+  border: 1px solid var(--c-amber);
+  border-radius: var(--r-lg);
+  padding: 65px 43px;
+  width: 100%;
+  max-width: 991px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+}
+
+/* Hero image */
+.es-card__img {
+  width: 288px;
+  height: 196px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Content block */
+.es-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 799px;
+  text-align: center;
+}
+
+/* Headline */
+.es-card__headline {
+  font-family: var(--font-primary);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--c-text-dark);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Subtitle */
+.es-card__subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--c-text-muted);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 640px;
+}
+.es-card__subtitle strong {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  color: var(--c-text-muted);
+}
+
+/* CTA block */
+.es-cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 227px;
+}
+
+.es-cta-hint {
+  font-family: var(--font-primary);
+  font-size: 10px;
+  color: var(--c-text-muted);
+  opacity: 0.6;
+  margin: 0;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .es-card             { padding: 36px 20px; }
+  .es-card__headline   { font-size: 22px; }
+  .es-card__subtitle   { font-size: 14px; }
+  .es-card__img        { width: 180px; height: auto; }
+  .es-page-center      { min-height: auto; padding: 24px 0; }
+}

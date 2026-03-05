@@ -1,0 +1,113 @@
+/* src/components/StepTabs.css
+   Colaba.ai — Workflow step tabs
+   Matches exact Figma spacing/typography from screenshots */
+
+.steptabs {
+  width: 100%;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-white);
+  padding: 0 32px;
+}
+
+.steptabs__track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 64px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.steptabs__track::-webkit-scrollbar { display: none; }
+
+/* ── Each step button ── */
+.steptabs__step {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  cursor: default;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+  position: relative;
+  top: 1px;             /* align border with container border */
+}
+
+/* Active step — bold label + amber underline */
+.steptabs__step--active {
+  border-bottom-color: var(--c-amber);
+  cursor: default;
+}
+
+/* Past step — clickable */
+.steptabs__step--past {
+  cursor: pointer;
+}
+.steptabs__step--past:hover { border-bottom-color: rgba(254,189,67,0.4); }
+.steptabs__step--past:active { opacity: 0.8; }
+
+/* Future step — muted */
+.steptabs__step--future { cursor: default; }
+
+/* ── Step dot / number ── */
+.steptabs__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--c-border);
+  flex-shrink: 0;
+  font-family: var(--font);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--c-text-muted);
+  transition: background 0.2s, color 0.2s;
+}
+
+.steptabs__dot--active {
+  background: var(--c-amber);
+  color: var(--c-white);
+}
+
+.steptabs__dot--past {
+  background: #22c55e;
+  color: var(--c-white);
+}
+
+/* ── Label text ── */
+.steptabs__label {
+  font-family: var(--font-os);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(116,116,115,0.7);
+  line-height: 1.2;
+  transition: color 0.2s, font-weight 0.2s;
+}
+
+.steptabs__step--active .steptabs__label {
+  font-weight: 600;
+  color: var(--c-dark);
+}
+
+.steptabs__step--past .steptabs__label {
+  color: var(--c-text-muted);
+}
+
+/* ── Chevron separator ── */
+.steptabs__chevron {
+  flex-shrink: 0;
+  margin: 0 10px;
+  color: rgba(116,116,115,0.4);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .steptabs         { padding: 0 16px; }
+  .steptabs__label  { font-size: 11px; }
+  .steptabs__step   { gap: 6px; }
+  .steptabs__chevron{ margin: 0 6px; }
+}

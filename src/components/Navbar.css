@@ -1,0 +1,35 @@
+/* src/components/Navbar.css */
+.cb-navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: var(--header-h);
+  background-color: var(--c-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  z-index: 1000;
+}
+.cb-navbar__logo   { height: 38px; width: auto; }
+.cb-navbar__right  { display: flex; align-items: center; gap: 12px; }
+.cb-navbar__divider{ width: 1px; height: 30px; background: rgba(255,255,255,0.18); }
+.cb-navbar__icon-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  background: var(--c-dark-input);
+  border: none; border-radius: 50%;
+  position: relative;
+  transition: background 0.2s, transform 0.15s;
+}
+.cb-navbar__icon-btn:hover  { background: #4f4f4f; transform: scale(1.08); }
+.cb-navbar__icon-btn:active { transform: scale(0.95); }
+.cb-navbar__icon-btn img    { width: 16px; height: 16px; }
+.cb-navbar__notif-dot {
+  position: absolute; top: 2px; right: 2px;
+  width: 6px; height: 6px;
+  background: #ef4444; border-radius: 50%;
+  border: 1.5px solid var(--c-dark);
+}
+.cb-navbar__avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+@media (max-width: 768px) { .cb-navbar { padding: 0 20px; } }

@@ -1,0 +1,966 @@
+/* ================================================================
+   book-review.css — Colaba.ai  /book-review
+   Pixel-perfect to Figma node 955:5157
+   All values directly from Figma dev inspect. px only — no rem.
+   Bootstrap used ONLY for: container-fluid / row g-0 / col-auto / col
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* ──────────────────────────────────────
+   PAGE ROOT
+   Dark background fills 100vh below navbar
+   ────────────────────────────────────── */
+.br-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #1f1f1f;
+  overflow: hidden;
+}
+
+/* ──────────────────────────────────────
+   THREE-COLUMN SHELL
+   Figma: top-89px (navbar) + bottom-91px (footer) = content area
+   Fixed height so sidebar & chat stay full height
+   ────────────────────────────────────── */
+.br-shell {
+  margin-top: 89px;        /* --header-h */
+  height: calc(100vh - 89px - 91px);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.br-shell .container-fluid,
+.br-shell .row {
+  height: 100%;
+}
+
+/* ================================================================
+   LEFT SIDEBAR
+   Figma node 955:5200
+   w-311px  top-89px  h-937px
+   bg-white  border-l border-r #dfdfdf
+   rounded-tl-32px
+   shadow: 4px 4px 10px 0px rgba(0,0,0,0.05)
+   inner: left-23px top-24px pb-12px w-263px gap-23.036px
+   ================================================================ */
+.br-sidebar {
+  width: 311px !important;
+  min-width: 311px;
+  max-width: 311px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-right: 1px solid #dfdfdf;
+  border-left:  1px solid #dfdfdf;
+  border-top:   1px solid #dfdfdf;
+  border-radius: 32px 0 0 0;
+  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.05);
+  padding: 24px 23px 12px;
+  overflow: hidden;
+}
+
+/* ── Book title block
+   Figma: gap-3px ── */
+.br-sb-head {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 18px;    /* gap-18px before rule */
+}
+/* Open Sans SemiBold 24px #181815 */
+.br-sb-head__title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #181815;
+  line-height: 1.2;
+  margin: 0;
+  white-space: nowrap;
+}
+/* Open Sans 11px: bold parts #181815, normal part rgba(116,116,115,0.7) */
+.br-sb-head__count {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(116,116,115,0.7);
+  line-height: 1.2;
+  margin: 0;
+}
+.br-sb-head__count-bold {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: #181815;
+}
+.br-sb-head__count-reg {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: rgba(116,116,115,0.7);
+}
+
+/* ── Rule  Figma: w-263px h-1px #dfdfdf ── */
+.br-sb-rule {
+  flex-shrink: 0;
+  height: 1px;
+  background: #dfdfdf;
+  margin: 0 0 18px;
+}
+
+/* ── Search box
+   Figma: border #dfdfdf border-solid rounded-8px
+          h-42px px-12px py-8px
+          icon vuesax/search 15.824px
+          Lato Regular 11.868px #181815 ── */
+.br-sb-search {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 7.912px;
+  height: 42px;
+  border: 1px solid #dfdfdf;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 11.518px;  /* gap before chapter list */
+}
+.br-sb-search__ic {
+  width: 15.824px;
+  height: 15.824px;
+  flex-shrink: 0;
+  opacity: .7;
+}
+.br-sb-search__inp {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Lato', sans-serif;
+  font-size: 11.868px;
+  font-weight: 400;
+  color: #181815;
+  caret-color: #febd43;
+}
+.br-sb-search__inp::placeholder { color: rgba(24,24,21,0.4); }
+
+/* ── Chapter list  Figma: h-677px gap-11.518px ── */
+.br-ch-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  /* extend to sidebar edges to show active border cleanly */
+  margin: 0 -23px;
+}
+
+/* ── Chapter item (inactive)
+   Figma: px-12px py-18px gap-16px items-center justify-center ── */
+.br-ch {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 12px;
+  cursor: pointer;
+  transition: background .13s;
+}
+.br-ch:hover:not(.br-ch--on) { background: rgba(0,0,0,0.018); }
+
+/* ── Active chapter item (Chapter 3)
+   Figma: bg-rgba(255,208,121,0.05) border border-#ffd079
+          rounded-12px px-12px py-18px gap-10px ── */
+.br-ch--on {
+  background: rgba(255,208,121,0.05);
+  border: 1px solid #ffd079;
+  border-radius: 12px;
+  margin: 0 10px;
+  padding: 18px 12px;
+}
+
+/* Chapter label  Figma: Lato Regular 11.648px #404040 */
+.br-ch__lbl {
+  font-family: 'Lato', sans-serif;
+  font-size: 11.648px;
+  font-weight: 400;
+  color: #404040;
+  line-height: 1.2;
+  margin: 0;
+  white-space: nowrap;
+}
+/* Chapter title  Figma: Lato SemiBold 23.37px #000 */
+.br-ch__title {
+  font-family: 'Lato', sans-serif;
+  font-size: 23.37px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.15;
+  margin: 0;
+}
+/* Excerpt  Figma: Lato Regular 12px rgba(64,64,64,0.6) h-48px leading-124.43% */
+.br-ch__excerpt {
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(64,64,64,0.6);
+  line-height: 124.43%;
+  height: 48px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+/* Divider between non-active items  Figma: w-250px h-0px border */
+.br-ch__div {
+  display: flex;
+  justify-content: center;
+  padding: 0 12px;
+}
+.br-ch__div img {
+  width: 250px;
+  height: 1px;
+  opacity: .55;
+  display: block;
+}
+
+/* ── Add New Chapter button
+   Figma: bg-rgba(255,208,121,0.1) border border-#ffd079
+          rounded-29px h-48px px-26.876px py-30.715px
+          gap-9.599px icon-24px
+          Lato SemiBold 14px #1f1f1f ── */
+.br-add-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9.599px;
+  height: 48px;
+  width: 100%;
+  background: rgba(255,208,121,0.1);
+  border: 1px solid #ffd079;
+  border-radius: 29px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f1f1f;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-top: auto;
+  padding: 0;
+  transition: background .13s, transform .12s;
+}
+.br-add-btn:hover  { background: rgba(255,208,121,0.18); transform: translateY(-1px); }
+.br-add-btn:active { transform: scale(.97); }
+.br-add-btn img    { flex-shrink: 0; }
+
+/* ================================================================
+   MAIN EDITOR COLUMN  (col fills remaining width)
+   Figma: left-calc(12.5%+95px) ≈ 311px sidebar
+          top-89px  w-923px
+   ================================================================ */
+.br-main {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── TOPBAR
+   Figma: bg-white border-b border-t #dfdfdf
+          pt-18px pb-50px px-20px
+          inner gap-17px w-882px ── */
+.br-topbar {
+  flex-shrink: 0;
+  background: #ffffff;
+  border-top:    1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  padding: 18px 20px 50px;
+}
+
+/* ── Breadcrumb  Figma: gap-8px items-center ── */
+.br-bc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 17px;
+}
+/* Lato Regular 14px rgba(116,116,115,0.7) */
+.br-bc__dim {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(116,116,115,0.7);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+/* Chevron  Figma: size-12px rotate(-90deg) */
+.br-bc__chev {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  transform: rotate(-90deg);
+  opacity: .55;
+  flex-shrink: 0;
+}
+/* Active (last) crumb  Figma: Lato SemiBold 14px #1f1f1f */
+.br-bc__cur {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f1f1f;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* ── TOOLBAR CARD
+   Figma: bg-rgba(255,208,121,0.1) border-1.362px-#dfdfdf
+          rounded-16px h-67px p-11px
+          shadow: 0px 5.447px 13.618px 0px rgba(0,0,0,0.05) ── */
+.br-tb {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+  height: 67px;
+  background: rgba(255,208,121,0.1) !important;
+  border: 1.362px solid #dfdfdf !important;
+  border-radius: 16px;
+  box-shadow: 0px 5.447px 13.618px 0px rgba(0,0,0,0.05) !important;
+  padding: 11px;
+  box-sizing: border-box;
+}
+
+/* Inner row  Figma: gap-21.253px p-12px */
+.br-tb__row {
+  display: flex;
+  align-items: center;
+  gap: 21.253px;
+  padding: 0 12px;
+}
+
+/* Icon button  Figma: icon size 21.253px */
+.br-tb__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 3px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .13s;
+}
+.br-tb__icon:hover     { background: rgba(255,208,121,0.28); }
+.br-tb__icon.ql-active { background: rgba(255,208,121,0.42); }
+.br-tb__icon img {
+  width: 21.253px;
+  height: 21.253px;
+  object-fit: contain;
+  display: block;
+}
+
+/* "Normal Text" select group
+   Figma: gap-10px px-12px py-8px rounded-8px
+          Inter Medium 14px #747474 + 18px SVG arrow */
+.br-tb__sel-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.br-tb__sel {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #747474;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  line-height: 16px;
+}
+.br-tb__sel-arr {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  pointer-events: none;
+  opacity: .6;
+}
+
+/* Kill Quill's default toolbar (we use our own) */
+.br-quill .ql-toolbar.ql-snow { display: none !important; }
+
+/* ================================================================
+   SCROLLABLE PAPER AREA
+   Figma: rounded-tl-30px rounded-tr-30px bg-#fafafa
+          overflow-y-auto overflow-x-clip
+          top-229px (topbar offset) h-888px
+   ================================================================ */
+.br-paper-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fafafa;
+  border-radius: 30px 30px 0 0;
+}
+.br-paper-bg {
+  padding: 21px 20px 60px;
+}
+
+/* ── A4 PAPER CARD
+   Figma: bg-white border-l border-r border-t #dfdfdf
+          rounded-30px
+          shadow: 4px 4px 10px 0px rgba(0,0,0,0.05)
+          left-20px top-21px w-882px h-1248px ── */
+.br-paper {
+  background: #ffffff;
+  border: 1px solid #dfdfdf;
+  border-radius: 30px;
+  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.05);
+  min-height: 1248px;
+  overflow: hidden;
+}
+
+/* Inner content area
+   Figma: left-56px top-56px w-768px pb-140.434px gap-26.331px */
+.br-paper__inner {
+  padding: 56px 56px 140px;
+  max-width: 880px;
+}
+
+/* Chapter label
+   Figma: Inter Bold 13.166px #94a3b8 tracking-1.3166px UPPERCASE h-17.554px */
+.br-paper__ch-lbl {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.166px;
+  font-weight: 700;
+  letter-spacing: 1.3166px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  line-height: 17.554px;
+  margin: 0 0 26.331px;
+  padding: 0;
+}
+
+/* H1 title
+   Figma: Lora Semi Bold 52.663px #0f172a leading-52.663px */
+.br-paper__h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 52.663px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 52.663px;
+  margin: 0 0 26.331px;
+  padding: 0;
+}
+
+/* ================================================================
+   REACT QUILL — Strip all defaults, apply exact Figma typography
+   ================================================================ */
+.br-quill .ql-container.ql-snow {
+  border: none !important;
+  font-family: 'Lora', Georgia, serif;
+}
+
+/* Editor area
+   Figma: Lora Regular 17.554px #1f1f1f line-height 35.109px */
+.br-quill .ql-editor {
+  padding: 0 !important;
+  min-height: 400px;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 17.554px;
+  font-weight: 400;
+  line-height: 35.109px;
+  color: #1f1f1f;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.br-quill .ql-editor:focus { outline: none !important; }
+
+/* Paragraphs  Figma: Lora Regular 17.554px #1f1f1f line-height 35.109px */
+.br-quill .ql-editor p {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 17.554px;
+  font-weight: 400;
+  line-height: 35.109px;
+  color: #1f1f1f;
+  margin: 0 0 26.331px;
+  padding: 0;
+}
+
+/* ── DROP CAP  Figma: #febd43 60.343px float-left leading-35.109px ── */
+.br-quill .ql-editor p:first-of-type::first-letter {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 60.343px;
+  font-weight: 400;
+  color: #febd43;
+  float: left;
+  line-height: 35.109px;
+  margin: 3px 4px 0 0;
+}
+
+/* Headings */
+.br-quill .ql-editor h1 { font-family:'Lora',serif; font-size:52.663px; font-weight:600; color:#0f172a; line-height:1.0;    margin:0 0 26px; }
+.br-quill .ql-editor h2 { font-family:'Lora',serif; font-size:32px;     font-weight:600; color:#0f172a; line-height:1.15;   margin:0 0 18px; }
+.br-quill .ql-editor h3 { font-family:'Lora',serif; font-size:24px;     font-weight:600; color:#0f172a; line-height:1.2;    margin:0 0 14px; }
+
+/* ── BLOCKQUOTE ("Drafting In Progress")
+   Figma: bg-rgba(238,173,43,0.1) border-l-4.389px #eead2b
+          rounded-17.554px
+          pl-21.943px pr-17.554px py-8.777px
+          gap-4.389px  w-737.28px ── */
+.br-quill .ql-editor blockquote {
+  background: rgba(238,173,43,0.10) !important;
+  border-left:   4.389px solid #eead2b !important;
+  border-right:  none !important;
+  border-top:    none !important;
+  border-bottom: none !important;
+  border-radius: 17.554px !important;
+  padding: 8.777px 17.554px 8.777px 21.943px !important;
+  margin: 0 0 26.331px !important;
+  font-style: normal !important;
+  max-width: 737.28px;
+  display: flex;
+  flex-direction: column;
+  gap: 4.389px;
+}
+/* "DRAFTING IN PROGRESS" heading inside blockquote
+   Figma: Inter Bold 13.166px #eead2b tracking-0.6583px UPPERCASE h-17.554px */
+.br-quill .ql-editor blockquote p:first-child {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13.166px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.6583px !important;
+  text-transform: uppercase !important;
+  color: #eead2b !important;
+  line-height: 17.554px !important;
+  margin: 0 !important;
+}
+/* Body paragraphs inside blockquote
+   Figma: Lora Regular 17.554px #334155 h-140.434px line-height 35.109px */
+.br-quill .ql-editor blockquote p {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 17.554px !important;
+  font-weight: 400 !important;
+  line-height: 35.109px !important;
+  color: #334155 !important;
+  margin: 0 !important;
+}
+
+/* AI suggestion text (italic muted)
+   Figma: Lora Regular Italic 17.554px #94a3b8 */
+.br-quill .ql-editor p.ai-suggestion {
+  color: #94a3b8 !important;
+  font-style: italic;
+}
+
+/* Secondary paragraph color #334155 */
+.br-quill .ql-editor p.secondary {
+  color: #334155;
+}
+
+/* Placeholder */
+.br-quill .ql-editor.ql-blank::before {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 17.554px;
+  font-style: italic;
+  color: rgba(148,163,184,0.7);
+  left: 0 !important;
+}
+
+/* ================================================================
+   RIGHT CHAT PANEL
+   Figma node 955:5285
+   w-495px  top-90px  h-937px
+   bg-white  border-l border-r border-t #dfdfdf
+   rounded-tr-32px
+   shadow: 4px 4px 10px 0px rgba(0,0,0,0.05)
+   ================================================================ */
+.br-chat {
+  width: 495px !important;
+  min-width: 495px;
+  max-width: 495px;
+  height: 100%;
+  background: #ffffff;
+  border-left:  1px solid #dfdfdf;
+  border-right: 1px solid #dfdfdf;
+  border-top:   1px solid #dfdfdf;
+  border-radius: 0 32px 0 0;
+  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+/* ── Chat header  Figma: left-23px top-23px w-447px gap-18px ── */
+.br-chat-hdr {
+  flex-shrink: 0;
+  padding: 23px 23px 0;
+}
+/* "Colaba AI"  Open Sans SemiBold 18px #181815 */
+.br-chat-hdr__name {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #181815;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+/* Subtitle  Open Sans Regular 11px #747473 */
+.br-chat-hdr__sub {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #747473;
+  margin: 0 0 18px;
+  line-height: 1.2;
+}
+/* Full-width divider  Figma: w-447px h-0px border */
+.br-chat-hdr__rule {
+  height: 1px;
+  background: #dfdfdf;
+  margin: 0 -23px;
+}
+
+/* ── Messages feed  fills remaining height, scrollable ── */
+.br-chat-feed {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 18px 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── CHAT BUBBLES ──
+   AI:   bg-white  rounded: 0 16px 16px 16px (no top-left)
+         px-14px py-18px  Lato Regular 16px #404040
+   User: bg-rgba(255,208,121,0.11) border-#ffd079
+         rounded: 16px 16px 16px 0 (no bottom-right)
+         w-365px px-14px py-18px Lato Regular 14px #404040
+         aligned right with pl-24px ── */
+.br-bub { display: flex; }
+
+.br-bub--ai  { align-self: flex-start; width: 100%; }
+.br-bub--ai .br-bub__txt {
+  display: block;
+  background: #ffffff;
+  border-radius: 0 16px 16px 16px;
+  padding: 18px 14px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #404040;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.br-bub--user { align-self: flex-end; justify-content: flex-end; padding-left: 24px; }
+.br-bub--user .br-bub__txt {
+  display: block;
+  background: rgba(255,208,121,0.11);
+  border: 1px solid #ffd079;
+  border-radius: 16px 16px 16px 0;
+  padding: 18px 14px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #404040;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 365px;
+}
+
+/* ── Thinking animation indicator ── */
+.br-thinking {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.br-thinking__txt {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(28,12,19,0.5);
+  white-space: nowrap;
+}
+
+/* ── Bottom section  Figma: top-806px = 937-131px ── */
+.br-chat-btm {
+  flex-shrink: 0;
+  padding: 18px 23px 12px;
+}
+
+/* INPUT PILL
+   Figma outer: bg-#f8f8f8 border-#e4e4e4 rounded-12px
+                shadow-0px-4px-10px-rgba(0,0,0,0.05) h-45px p-3px w-447px */
+.br-inp-outer {
+  height: 45px;
+  background: #f8f8f8;
+  border: 1px solid #e4e4e4;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.05);
+  padding: 3px;
+}
+/* Figma inner: bg-white rounded-11px h-38px p-5px */
+.br-inp-inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 11px;
+  padding: 0 5px;
+  gap: 6px;
+}
+
+/* + Add button
+   Figma: bg-rgba(255,208,121,0.2) rounded-7px p-3.111px icon-21.778px */
+.br-inp-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: rgba(255,208,121,0.2);
+  border: none;
+  border-radius: 7px;
+  padding: 3.111px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background .13s;
+}
+.br-inp-add:hover { background: rgba(255,208,121,0.38); }
+.br-inp-add img { width: 21.778px; height: 21.778px; display: block; }
+
+/* Text field  Figma: Lato Regular 12px rgba(64,64,64,0.6) */
+.br-inp-field {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(64,64,64,0.6);
+  caret-color: #febd43;
+}
+.br-inp-field::placeholder { color: rgba(64,64,64,0.6); }
+
+/* Right actions group */
+.br-inp-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* Mic icon  Figma: size-15.889px */
+.br-inp-mic {
+  display: block;
+  width: 15.889px;
+  height: 15.889px;
+  opacity: .7;
+  flex-shrink: 0;
+}
+
+/* Send button
+   Figma: bg-#febd43 rounded-7px px-8px py-4px
+          gap-4px icon-12.654px
+          Lato Regular 12px #404040 */
+.br-send {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: #febd43;
+  border: none;
+  border-radius: 7px;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #404040;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: filter .13s, transform .12s;
+}
+.br-send:hover   { filter: brightness(1.07); }
+.br-send:active  { transform: scale(.97); }
+.br-send:disabled { opacity: .6; cursor: default; }
+.br-send img { width: 12.654px; height: 12.654px; display: block; }
+
+/* Disclaimer  Figma: Lato Regular 10px rgba(64,64,64,0.5) */
+.br-disclaimer {
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(64,64,64,0.5);
+  margin: 10px 0 0;
+  padding: 0;
+  line-height: 1.4;
+  width: 447px;
+  max-width: 100%;
+}
+
+/* ================================================================
+   FOOTER  (fixed bottom)
+   Figma node 955:5377
+   bg-white border-#dfdfdf h-91px
+   shadow: 4px 4px 10px 0px rgba(0,0,0,0.05)
+   px-60px inner w-1608px justify-between
+   ================================================================ */
+.br-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 91px;
+  background: #ffffff;
+  border: 1px solid #dfdfdf;
+  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  z-index: 999;
+}
+
+.br-foot__left  { display: flex; align-items: center; gap: 10px; }
+.br-foot__right { display: flex; align-items: center; gap: 20px; }
+
+/* Save Draft
+   Figma: bg-white border-#ccc rounded-55px w-123px
+          px-16px py-13px gap-10px icon-16px
+          Lato SemiBold 14px #181815 */
+.br-foot__save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 123px;
+  padding: 13px 16px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 55px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #181815;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color .14s, transform .12s;
+}
+.br-foot__save:hover  { border-color: #1f1f1f; transform: translateY(-1px); }
+.br-foot__save:active { transform: scale(.97); }
+.br-foot__save img    { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* "I Want to Change Something"
+   Figma: Lato Regular 14px rgba(28,12,19,0.5) px-16px py-13px */
+.br-foot__change {
+  background: none;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(28,12,19,0.5);
+  cursor: pointer;
+  padding: 13px 16px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: color .14s;
+}
+.br-foot__change:hover { color: #1f1f1f; }
+
+/* Auto-saved  Lato Regular 14px rgba(28,12,19,0.5) */
+.br-foot__auto {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(28,12,19,0.5);
+  white-space: nowrap;
+}
+
+/* "This Looks Great"  same style */
+.br-foot__looks {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(28,12,19,0.5);
+  padding: 13px 16px;
+  white-space: nowrap;
+}
+
+/* Publish Book
+   Figma: bg-gradient(#ffd079→#f87846) border-#febd43 rounded-24px
+          shadow: 0px 4px 8.1px 0px rgba(254,189,67,0.4)
+          p-12px w-186.5px gap-12px icon-16px
+          Lato SemiBold 14px white */
+.br-foot__publish {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 186.5px;
+  padding: 12px;
+  background: linear-gradient(to right, #ffd079, #f87846);
+  border: 1px solid #febd43;
+  border-radius: 24px;
+  box-shadow: 0px 4px 8.1px 0px rgba(254,189,67,0.4);
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: filter .15s, transform .12s, box-shadow .15s;
+}
+.br-foot__publish:hover  {
+  filter: brightness(1.07);
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 16px 0px rgba(254,189,67,0.45);
+}
+.br-foot__publish:active { transform: scale(.97); }
+.br-foot__publish img { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ================================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================================ */
+@media (max-width: 1400px) {
+  .br-chat { width: 380px !important; min-width: 380px; max-width: 380px; }
+}
+@media (max-width: 1200px) {
+  .br-sidebar { width: 240px !important; min-width: 240px; max-width: 240px; }
+  .br-chat    { width: 300px !important; min-width: 300px; max-width: 300px; }
+  .br-footer  { padding: 0 24px; }
+}
+@media (max-width: 992px) {
+  .br-page   { height: auto; overflow: visible; }
+  .br-shell  { height: auto; overflow: visible; }
+  .br-shell .row { flex-direction: column; height: auto; }
+  .br-sidebar { width: 100% !important; min-width: 100%; max-width: 100%; height: 360px; border-radius: 0; }
+  .br-main    { height: 600px; }
+  .br-chat    { width: 100% !important; min-width: 100%; max-width: 100%; height: 440px; border-radius: 0; }
+  .br-footer  { padding: 0 20px; }
+  .br-foot__auto, .br-foot__looks { display: none; }
+}
+@media (max-width: 640px) {
+  .br-foot__change  { display: none; }
+  .br-foot__save    { width: auto; }
+  .br-foot__publish { width: auto; }
+  .br-paper__inner  { padding: 32px 24px 60px; }
+  .br-paper__h1     { font-size: 36px; line-height: 1.1; }
+}
