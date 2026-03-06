@@ -178,7 +178,7 @@ export default function BookReview() {
                        rounded-tl-32px
                        shadow 4px 4px 10px rgba(0,0,0,0.05)
                 ════════════════════════════════ */}
-            <div className="col-auto br-sidebar">
+            <div className="col-auto br-sidebar p-35">
 
               {/* Book title + chapter count */}
               <div className="br-sb-head">

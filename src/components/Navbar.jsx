@@ -91,7 +91,7 @@ export default function Navbar() {
               {/* Open Sans SemiBold 14px white */}
               <span className="cb-navbar__user-name">waleed aamir</span>
               {/* Open Sans Regular 11px white text-right */}
-              <span className="cb-navbar__user-role">Lead UIUX Designer</span>
+              <span className="cb-navbar__user-role">Senior UI/UX Developer</span>
             </div>
           </div>
 
